@@ -93,7 +93,7 @@ class PLanguagePseudoType(PseudoTypeMixin):
     u'Y': u'\u00dd',  # Y acute
     }
     # Matches vowels and P
-    _PSUB_RE = re.compile("(%s)" % '|'.join(_VOWELS.keys() + ['P']))
+    _PSUB_RE = re.compile("(%s)" % '|'.join(list(_VOWELS.keys()) + ['P']))
 
     @classmethod
     def Repl(cls, match):
