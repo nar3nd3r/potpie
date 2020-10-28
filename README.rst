@@ -1,7 +1,7 @@
 Potpie: Pseudo Po Translations
 ==============================
 
-The original author is `dstufft` and code was forked from [dstufft](https://github.com/dstufft/potpie).
+The original author is `dstufft` and code was forked from (dstufft)[https://github.com/dstufft/potpie].
 
 I'm using this place just for bug fixes for internal use.
 
