@@ -1,0 +1,4 @@
+**/build/
+**/dist/
+**/potpie.egg-info/
+**/__pycache__/**

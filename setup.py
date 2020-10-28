@@ -12,9 +12,9 @@ install_requires = [
 setup(
     name="potpie",
     version=potpie.__version__,
-    author="Donald Stufft",
-    author_email="donald.stufft@gmail.com",
-    url="https://github.com/dstufft/potpie",
+    author="Narender Singh",
+    author_email="nar3nd3r@gmail.com",
+    url="https://github.com/nar3nd3r/potpie",
     description="Translation Utility to Create Pseudo Translations of PO Files",
     long_description=open('README.rst').read(),
     license=open("LICENSE").read(),
