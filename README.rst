@@ -1,9 +1,9 @@
 Potpie: Pseudo Po Translations
 ==============================
 
-The original author is `dstufft` and code was forked from (dstufft)[https://github.com/dstufft/potpie].
+## The original author is `dstufft` and code was forked from [dstufft](https://github.com/dstufft/potpie).
 
-I'm using this place just for bug fixes for internal use.
+## I'm using this place just for bug fixes for internal use.
 
 Potpie is a GPL Licensed cli wrapper around the Psuedo Translations available
 from Transifex_ pseudo translations. The available types are ``brackets``,
