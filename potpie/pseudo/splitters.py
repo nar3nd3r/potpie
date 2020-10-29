@@ -60,14 +60,14 @@ class PrintfValidator(BaseValidator):
     """
 
     printf_re = re.compile(
-        '%((?:(?P<ord>\d+)\$|\((?P<key>\w+)\))?(?P<fullvar>[+#-]*(?:\d+)?'\
-            '(?:\.\d+)?(hh\|h\|l\|ll)?(?P<type>[\w%])))'
+        '%((?:(?P<ord>\d+)\$|\((?P<key>\w+)\))?(?P<fullvar>[+#-]*(?:\d+)?' \
+        '(?:\.\d+)?(hh\|h\|l\|ll)?(?P<type>[\w%])))'
     )
 
     def precondition(self):
         """Check if the number of plurals in the two languages is the same."""
         return self.tlang.nplurals == self.slang.nplurals and \
-                super(PrintfValidator, self).precondition()
+               super(PrintfValidator, self).precondition()
 
     def validate(self, old, new):
         old = unescape(old)
@@ -77,19 +77,19 @@ class PrintfValidator(BaseValidator):
         if len(old_matches) != len(new_matches):
             raise ValidationError("The number of arguments seems to differ "
                                   "between the source string and the translation."
-                )
+                                  )
 
 
 def next_splitter_or_func(string, splitters, func, pseudo_type):
     """
     Helper for doing the next splitter check.
-    
+
     If the list is not empty, call the next splitter decorator appropriately,
     otherwise call the decorated function.
     """
     if splitters:
         return splitters[0](string, splitters[1:])(func)(pseudo_type,
-            string)
+                                                         string)
     else:
         return func(pseudo_type, string)
 
@@ -99,20 +99,22 @@ class SplitterDecorators(object):
     A class decorator that receives a list of splitter decorator classes and
     calls the first splitter from the list passing the decorated function as
     an argument as well as the list of splitters without the called splitter.
-    
+
     In case the list of splitters is empty, it calls the decorated function
     right away.
-    
+
     This decorator must be only used with method of classes inheriting from
     ``transifex.resources.formats.pseudo.PseudoTypeMixin``.
     """
+
     def __init__(self, splitters):
         self.splitters = splitters
-    
+
     def __call__(self, func):
         def _wrapper(pseudo_type, string):
             return next_splitter_or_func(string, self.splitters, func,
-                pseudo_type)
+                                         pseudo_type)
+
         return _wrapper
 
 
@@ -138,14 +140,15 @@ class BaseSplitter(object):
                 t = string.split(key, 1)
                 string = t[0]
                 string = next_splitter_or_func(string, self.splitters,
-                    func, pseudo_type)
+                                               func, pseudo_type)
                 text.extend([string, key])
                 i += 1
                 string = t[1]
             string = next_splitter_or_func(string, self.splitters,
-                func, pseudo_type)
+                                           func, pseudo_type)
             text.append(string)
             return "".join(text)
+
         return _wrapped
 
     @classmethod

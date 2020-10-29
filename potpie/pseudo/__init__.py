@@ -4,12 +4,13 @@
 class PseudoTypeMixin:
     """
     Mixin class to serve as a base for creation of Pseudo class types.
-    
+
     Classes derived from this class can implement custom methods depending
     on the i18n_type. Those custom method names must match the values
     available for i18n_type (settings.I18N_METHODS.keys()) in lower case
     and with an underscore in front of it.
     """
+
     def __init__(self, i18n_type):
         self.method_name = '_%s' % i18n_type.lower()
 
@@ -28,9 +29,9 @@ class PseudoTypeMixin:
     def _skip_char_around(self, string, char='\n'):
         """
         Custom pseudo method for skipping a given char around a string.
-        
+
         The default char to be skipped is the new line (\n) one.
-        
+
         Example:
             '\nHello\n' would call ``_base_compile`` with 'Hello' only.
         """
